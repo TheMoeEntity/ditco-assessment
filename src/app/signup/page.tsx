@@ -2,13 +2,40 @@ import Form from "@/components/Form";
 import React from "react";
 import winterman from "../../../public/images/AVATAR.png";
 import Image from "next/image";
+import spar from '../../../public/images/Screenshot 2024-04-18 at 18.23.25.png'
+import blob from '../../../public/images/pnnnnn.png'
+import blob2 from '../../../public/images/pnnnnn2.png'
 
 const page = () => {
   return (
     <section className="w-full h-auto flex flex-col lg:flex-row mx-auto max-w-[2000px]">
-      <div className="px-10 min-h-screen object-cover relative flex flex-col items-center justify-center w-full bg-[#2B64F4] lg:w-[50%]  lg:flex-[50%] h-auto">
-        <div className="absolute top-10 left-7 md:left-18 md:text-4xl text-3xl text-white">
-          Spar
+      <div className="px-10 min-h-screen overflow-x-hidden object-cover relative flex flex-col items-center justify-center w-full bg-[#316AF4] lg:w-[50%]  lg:flex-[50%] h-auto">
+        <div className="absolute w-[137px] top-1/2 md:top-1/3 -right-17 md:-right-15 md:text-4xl text-3xl text-white">
+          <Image
+            src={blob}
+            alt="blob"
+            quality={100}
+            sizes={"100vw"}
+            className="object-cover w-[57%] md:w-[60%] h-auto opacity-35"
+          />
+        </div>
+        <div className="absolute w-[137px] top-50 -left-5 md:text-4xl text-3xl text-white">
+          <Image
+            src={blob2}
+            alt="blob2"
+            quality={100}
+            sizes={"100vw"}
+            className="object-cover w-[60%] h-auto opacity-100"
+          />
+        </div>
+        <div className="absolute w-[137px] top-10 left-7 md:left-18 md:text-4xl text-3xl text-white">
+          <Image
+            src={spar}
+            alt="logo"
+            quality={100}
+            sizes={"100vw"}
+            className="object-cover w-full h-auto"
+          />
         </div>
         <div className="absolute bottom-10 left-7 md:left-18 text-[lightgray] text-sm ">
           Copyright &copy; 2021 Spar Inc. Proudly made in India.
@@ -24,11 +51,11 @@ const page = () => {
               className="object-cover w-full h-auto"
             />
           </div>
-          <div className="text-white md:w-[80%] flex md:mx-auto flex-col gap-y-10">
-            <h1 className="text-4xl font-semibold">
+          <div className="text-white w-full md:w-[78%] flex md:mx-auto flex-col gap-y-6">
+            <h1 className="text-3xl md:text-4xl font-semibold">
               We simplify your financial handlings
             </h1>
-            <p>
+            <p className="md:w-[70%]">
               Register your business or file your tax returns seamlessly with
               Spar
             </p>

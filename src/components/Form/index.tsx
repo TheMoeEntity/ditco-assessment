@@ -11,7 +11,6 @@ const Form = () => {
   const { push } = useRouter()
   const submitForm = async (e: FormEvent) => {
     e.preventDefault()
-    console.log("form submitted")
     const data = {
       email: (
         e.target[
@@ -25,7 +24,7 @@ const Form = () => {
       ).value,
       phone: (
         e.target[
-        4 as unknown as keyof typeof e.target
+        5 as unknown as keyof typeof e.target
         ] as unknown as HTMLInputElement
       ).value,
       password: (
@@ -34,7 +33,6 @@ const Form = () => {
         ] as unknown as HTMLInputElement
       ).value,
     };
-    console.log(data.password)
     if (data.email.trim() === "") {
       toast.error("Email cannot be empty");
       return;
