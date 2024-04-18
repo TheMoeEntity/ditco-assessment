@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import './satoshi.css'
 import Script from "next/script";
+import AppLayout from "@/components/AppLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <AppLayout>{children}</AppLayout>
         <Script
           src="https://kit.fontawesome.com/4ef8c63dd7.js"
           crossOrigin="anonymous"
