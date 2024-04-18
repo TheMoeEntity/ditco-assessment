@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 const options: ApexOptions = {
-  colors: ["#3C50E0", "#80CAEE"],
+  colors: ["#EC6D3E", "#FFECD6"],
   chart: {
     fontFamily: "Satoshi, sans-serif",
     type: "bar",
@@ -44,7 +44,7 @@ const options: ApexOptions = {
   },
 
   xaxis: {
-    categories: ["M", "T", "W", "T", "F", "S", "S"],
+    categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon"],
   },
   legend: {
     position: "top",
@@ -74,11 +74,11 @@ const SalesCharts: React.FC = () => {
     series: [
       {
         name: "Sales",
-        data: [44, 55, 41, 67, 22, 43, 65],
+        data: [44, 55, 41, 67, 22, 43, 65, 80, 83],
       },
       {
         name: "Revenue",
-        data: [13, 23, 20, 8, 13, 27, 15],
+        data: [13, 23, 20, 8, 13, 27, 15, 30, 36],
       },
     ],
   });
@@ -95,8 +95,11 @@ const SalesCharts: React.FC = () => {
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-xl font-semibold text-black dark:text-white">
-            Profit this week
+            Revenue Growth
           </h4>
+          <h3 className="text-gray-500 mt-4 text-sm">
+            On the week on website and compared with e-commerce
+          </h3>
         </div>
         <div>
           <div className="relative z-20 inline-block">
