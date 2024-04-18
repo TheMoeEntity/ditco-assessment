@@ -1,13 +1,65 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 const Form = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
+  const submitForm = async (e: FormEvent) => {
+    e.preventDefault()
+    console.log("form submitted")
+    const data = {
+      email: (
+        e.target[
+        0 as unknown as keyof typeof e.target
+        ] as unknown as HTMLInputElement
+      ).value,
+      fullName: (
+        e.target[
+        1 as unknown as keyof typeof e.target
+        ] as unknown as HTMLInputElement
+      ).value,
+      phone: (
+        e.target[
+        4 as unknown as keyof typeof e.target
+        ] as unknown as HTMLInputElement
+      ).value,
+      password: (
+        e.target[
+        3 as unknown as keyof typeof e.target
+        ] as unknown as HTMLInputElement
+      ).value,
+    };
+    await fetch(('/api/signup'), {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(async res => {
+        const isJson = res.headers.get('content-type')?.includes('application/json')
+        const data = isJson ? await res.json() : null
 
+        if (!res.ok) {
+          const error = (data && data.message) || res.status;
+          // toast.error(error)
+          return Promise.reject(error)
+
+        } else if (res.ok) {
+          // toast.success("Login success")
+          console.log(data)
+          return data
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+  }
   return (
-    <form className="mt-5 flex flex-col gap-y-[20px] pb-12">
+    <form className="mt-5 flex flex-col gap-y-[20px] pb-12" onSubmit={e => submitForm(e)}>
       <div className="rounded-lg px-5 flex flex-col w-full border-gray-300 border-[1px] py-2">
         <label htmlFor="" className=" block mb-1">
           Email

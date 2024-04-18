@@ -10,9 +10,17 @@ export type UserProviderType = {
     children: ReactNode
 }
 export interface IDashBoard {
-    title:string
-    amount:number
-    color:string
-    icon:string
-    iconColor:string
+    title: string
+    amount: number
+    color: string
+    icon: string
+    iconColor: string
+}
+export interface DeviceDetails {
+    browser: string;
+    os: string;
+    device: string;
+    cpu?: string
+    engine?: string
+    getOs?: () => any
 }

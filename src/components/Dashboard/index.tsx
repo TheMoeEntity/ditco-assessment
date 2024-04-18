@@ -51,7 +51,7 @@ const Dashboard = () => {
           <h1 className="font-semibold text-2xl text-black md:text-4xl">
             Welcome back, Antonio
           </h1>
-          <p className="text-gray-500">
+          <p className="text-gray-400 md:w-[67%]">
             Track your sales performance at a glance with our dynamic dashboard,
             providing real-time insights on revenue, conversions, and customer
             acquisition.{" "}
