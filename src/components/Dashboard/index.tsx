@@ -5,19 +5,50 @@ import { useContext, useState } from "react";
 import CardDataStats from "../Cards/CardDataStats";
 import Charts from "../Cards/Charts";
 import SalesCharts from "../Cards/SalesCharts";
+import { IDashBoard } from "@/Helpers/types";
 
 const Dashboard = () => {
-  const { setSideBar, sidebar } = useContext(sideContext);
+  const { sidebar } = useContext(sideContext);
+  const dashAssets: IDashBoard[] = [
+    {
+      color: 'bg-green-100',
+      amount: 6109287,
+      title: 'Total Revenue',
+      icon: 'fas fa-money-bill-alt',
+      iconColor: 'text-green-500',
+    },
+    {
+      color: 'bg-purple-100',
+      iconColor: 'text-purple-500',
+      amount: 12044324,
+      title: 'Total Customer',
+      icon: 'fas fa-users'
+    },
+    {
+      color: 'bg-red-200',
+      iconColor: 'text-red-500',
+      amount: 8343782,
+      title: 'Total Transaction',
+      icon: 'fas fa-money-check-alt'
+    },
+    {
+      color: 'bg-purple-100',
+      iconColor: 'text-purple-500',
+      amount: 19744324,
+      title: 'Total Product',
+      icon: 'fas fa-shopping-bag'
+    },
+  ]
   return (
-    <div className="flex w-full overflow-hidden bg-[#fafafa] flex-col gap-y-5 py-7 px-5 min-h-full relative transition-all duration-700">
+    <div className="flex w-full overflow-hidden text-black bg-[#fafafa] flex-col gap-y-5 py-7 px-5 min-h-full relative transition-all duration-700">
       <div
         className={
-          `w-full flex flex-col gap-y-5 trans mx-auto lg:pl-[18rem]  md:pr-[3rem] ` +
+          `w-full flex flex-col gap-y-5 trans mx-auto lg:pl-[18rem] ` +
           (sidebar && "pl-[19rem]")
         }
       >
         <div className="flex flex-col gap-y-5">
-          <h1 className="font-semibold text-2xl md:text-4xl">
+          <h1 className="font-semibold text-2xl text-black md:text-4xl">
             Welcome back, Antonio
           </h1>
           <p className="text-gray-500">
@@ -30,19 +61,22 @@ const Dashboard = () => {
         <div className="flex flex-col m-auto no-scrollbar mt-7 p-auto w-full">
           <div className="flex overflow-x-scroll no-scrollbar pb-10 no-scrollbar">
             <div className="flex gap-5 flex-nowrap mr-10 whitespace-nowrap">
-              {[...Array(4)].map((x, i) => (
+              {dashAssets.map((x, i) => (
                 <div
-                  className="min-w-[250px] max-w-full w-full flex justify-center items-center gap-x-5 border-[1px] rounded-lg px-8 py-7"
+                  className="min-w-[190px] max-w-full w-full flex justify-center items-center gap-x-5 border-[1px] rounded-lg px-8 py-7"
                   key={i}
                 >
-                  <div className="flex items-center justify-center rounded-full w-14 h-14 bg-green-100">
-                    <span className="fas fa-money-bill-alt text-green-700 text-2xl"></span>
+                  <div>
+                    <div className={"flex items-center justify-center rounded-full w-[56px] h-[56px] " + (x.color)}>
+                      <span className={"text-xl " + (x.icon) + ` ${x.iconColor}`}></span>
+                    </div>
                   </div>
+
                   <div className="flex flex-col gap-y-4 items-stretch justify-between">
-                    <span className="font-semibold md:text-4xl text-2xl">
-                      $6,10,9287
+                    <span className="font-semibold md:text-3xl text-2xl">
+                      {x.amount.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}
                     </span>
-                    <span className="text-gray-500">Total Revenue</span>
+                    <span className="text-gray-500">{x.title}</span>
                   </div>
                 </div>
               ))}

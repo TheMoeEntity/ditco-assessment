@@ -84,7 +84,7 @@ const Form = () => {
         Make sure it contains at least 8 characters, a number or symbols
       </p>
       <div className="flex border-[1px] border-[lightg] rounded-lg ">
-        <div className="bg-[lightgray] w-[20%] md:w-[10%] flex items-center justify-center"></div>
+        <div className="bg-[lightgray] w-[20%] md:w-[15%] flex items-center justify-center">+91</div>
         <input
           placeholder="Mobile"
           type="tel"

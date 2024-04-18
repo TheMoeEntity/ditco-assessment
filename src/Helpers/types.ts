@@ -9,3 +9,10 @@ export type sideContex = {
 export type UserProviderType = {
     children: ReactNode
 }
+export interface IDashBoard {
+    title:string
+    amount:number
+    color:string
+    icon:string
+    iconColor:string
+}

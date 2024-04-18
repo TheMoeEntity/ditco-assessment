@@ -5,17 +5,17 @@ import Image from "next/image";
 
 const page = () => {
   return (
-    <section className="w-full h-auto flex flex-col lg:flex-row mx-auto max-w-7xl">
-      <div className="px-10 min-h-[840px] object-cover relative flex flex-col items-center justify-center w-full bg-[#2B64F4] lg:w-[50%]  lg:flex-[50%] h-auto">
-        <div className="absolute top-10 left-10 md:left-18 md:text-4xl text-2xl text-white">
+    <section className="w-full h-auto flex flex-col lg:flex-row mx-auto max-w-[2000px]">
+      <div className="px-10 min-h-screen object-cover relative flex flex-col items-center justify-center w-full bg-[#2B64F4] lg:w-[50%]  lg:flex-[50%] h-auto">
+        <div className="absolute top-10 left-7 md:left-18 md:text-4xl text-3xl text-white">
           Spar
         </div>
-        <div className="absolute bottom-10 left-10 md:left-18 text-[lightgray] text-sm ">
+        <div className="absolute bottom-10 left-7 md:left-18 text-[lightgray] text-sm ">
           Copyright &copy; 2021 Spar Inc. Proudly made in India.
         </div>
 
         <div className="w-auto mx-auto flex-col flex gap-y-10">
-          <div className=" w-[80%] mx-auto" >
+          <div className="md:w-[80%] mx-auto" >
             <Image
               src={winterman}
               alt="winterman"
@@ -24,8 +24,8 @@ const page = () => {
               className="object-cover w-full h-auto"
             />
           </div>
-          <div className="text-white md:w-[80%] lg:pl-10 flex flex-col gap-y-4">
-            <h1 className="text-2xl md:text-4xl font-semibold">
+          <div className="text-white md:w-[80%] flex md:mx-auto flex-col gap-y-10">
+            <h1 className="text-4xl font-semibold">
               We simplify your financial handlings
             </h1>
             <p>
