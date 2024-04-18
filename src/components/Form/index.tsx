@@ -1,10 +1,14 @@
 "use client";
+import { Helpers } from "@/Helpers";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 const Form = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
+  const { push } = useRouter()
   const submitForm = async (e: FormEvent) => {
     e.preventDefault()
     console.log("form submitted")
@@ -30,6 +34,20 @@ const Form = () => {
         ] as unknown as HTMLInputElement
       ).value,
     };
+    console.log(data.password)
+    if (data.email.trim() === "") {
+      toast.error("Email cannot be empty");
+      return;
+    } if (data.password.trim() === "") {
+      toast.error("Oga enter password jare, don't be mad 😡 ");
+      return;
+    } else if (!Helpers.isValidPassword(data.password)) {
+      toast.error("Password not valid!");
+      return
+    } else if (data.phone.trim() === '') {
+      toast.error("Oga enter your phone number, this is not a valid phone number");
+      return;
+    }
     await fetch(('/api/signup'), {
       method: 'POST',
       headers: {
@@ -44,11 +62,12 @@ const Form = () => {
 
         if (!res.ok) {
           const error = (data && data.message) || res.status;
-          // toast.error(error)
+          toast.error(error)
           return Promise.reject(error)
 
         } else if (res.ok) {
-          // toast.success("Login success")
+          toast.success("Sign up success")
+          push('/')
           console.log(data)
           return data
         }
@@ -93,6 +112,7 @@ const Form = () => {
           <input
             placeholder="Last Name"
             type="text"
+            defaultValue={'Nwigberi'}
             className="py-1 font-bold bg-transparent outline-none w-full "
           />
         </div>

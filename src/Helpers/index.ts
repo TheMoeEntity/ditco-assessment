@@ -18,6 +18,16 @@ export class Helpers {
 
         return `Browser: ${browser}, OS: ${os}, Device: ${device}, Engine: ${engine}, CPU: ${cpu}`;
     }
+    static isValidPassword(password: string): boolean {
+        if (password.length < 8) {
+            return false;
+        }
+        const digitOrSymbolRegex = /[0-9!@#$%^&*()_+|~\-=`{}\[\]:";'<>?,.\/\\]/;
+        if (!digitOrSymbolRegex.test(password)) {
+            return false;
+        }
+        return true;
+    }
     static hashPassword = async (password: string): Promise<string> => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
