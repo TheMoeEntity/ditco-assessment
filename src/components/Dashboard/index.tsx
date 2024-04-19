@@ -8,7 +8,7 @@ import Sales from "../Cards/Sales";
 
 const Dashboard = () => {
   const { sidebar } = useContext(sideContext);
-   
+
   return (
     <div className="flex w-full overflow-hidden text-black bg-[#fafafa] flex-col gap-y-5 py-7 px-5 min-h-full relative transition-all duration-700">
       <div
@@ -53,15 +53,19 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      
-       
-        <div className="flex flex-col m-auto no-scrollbar mt-7 p-auto w-full">
+
+
+        <div className=" hidden md:flex flex-col m-auto no-scrollbar mt-7 p-auto w-full">
           <div className="flex overflow-x-scroll no-scrollbar pb-10 no-scrollbar">
-            <div className="flex gap-5 flex-nowrap mr-10 whitespace-nowrap">
+            <div className="flex gap-5 flex-wrap md:flex-nowrap mr-10 whitespace-nowrap">
               <SalesCharts />
               <Sales />
             </div>
           </div>
+        </div>
+        <div className="md:hidden flex flex-col gap-y-4">
+          <SalesCharts />
+          <Sales />
         </div>
         <Charts />
       </div>
