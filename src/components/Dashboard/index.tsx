@@ -1,5 +1,4 @@
 "use client";
-
 import { sideContext } from "@/Helpers/contextAPI/sidebar-context";
 import { useContext, useState } from "react";
 import Charts from "../Cards/Charts";
@@ -9,7 +8,7 @@ import Sales from "../Cards/Sales";
 
 const Dashboard = () => {
   const { sidebar } = useContext(sideContext);
-
+   
   return (
     <div className="flex w-full overflow-hidden text-black bg-[#fafafa] flex-col gap-y-5 py-7 px-5 min-h-full relative transition-all duration-700">
       <div
@@ -38,8 +37,8 @@ const Dashboard = () => {
                   key={i}
                 >
                   <div>
-                    <div className={"flex items-center justify-center rounded-full w-[56px] h-[56px] " + ("bg-" + x.color + "-100")}>
-                      <span className={(x.icon)}></span>
+                    <div className={"flex items-center justify-center rounded-full w-[56px] h-[56px] " + (x.color)}>
+                      <span className={"text-xl " + (x.icon) + ` ${x.iconColor}`}></span>
                     </div>
                   </div>
 
@@ -54,8 +53,8 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-
-
+      
+       
         <div className="flex flex-col m-auto no-scrollbar mt-7 p-auto w-full">
           <div className="flex overflow-x-scroll no-scrollbar pb-10 no-scrollbar">
             <div className="flex gap-5 flex-nowrap mr-10 whitespace-nowrap">
@@ -64,7 +63,6 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-
         <Charts />
       </div>
     </div>

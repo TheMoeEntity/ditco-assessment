@@ -9,13 +9,6 @@ import { Toaster } from "react-hot-toast";
 
 const AppLayout = ({ children }: { children: ReactNode }) => {
   const [sidebar, setSideBar] = useState(false);
-  const isMD = useClientMediaQuery('(min-width: 768px)');
-  useEffect(() => {
-    if (isMD === true) {
-      setSideBar(true)
-    }
-    console.log(isMD)
-  }, [isMD])
   const pathname = usePathname();
   return (
     <div>
