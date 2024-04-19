@@ -37,8 +37,8 @@ const Dashboard = () => {
                   key={i}
                 >
                   <div>
-                    <div className={"flex items-center justify-center rounded-full w-[56px] h-[56px] " + (x.color)}>
-                      <span className={"text-xl " + (x.icon) + ` ${x.iconColor}`}></span>
+                    <div className={x.className + "bg-purple-100 " + (x.color)}>
+                      <span className={"text-xl " + (x.icon)}></span>
                     </div>
                   </div>
 

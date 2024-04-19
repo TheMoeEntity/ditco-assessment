@@ -12,6 +12,7 @@ export type UserProviderType = {
 export interface IDashBoard {
     title: string
     amount: number
+    className?:string
     color: string
     icon: string
     iconColor: string
