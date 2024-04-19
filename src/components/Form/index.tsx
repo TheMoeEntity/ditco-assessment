@@ -1,80 +1,9 @@
 "use client";
-import { Helpers } from "@/Helpers";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { useSubmitForm } from "@/Helpers/Hooks";
 import toast from "react-hot-toast";
 
 const Form = () => {
-  const [visible, setVisible] = useState<boolean>(false);
-  const [password, setPassword] = useState<string>("");
-  const { push } = useRouter()
-  const submitForm = async (e: FormEvent) => {
-    e.preventDefault()
-    const data = {
-      email: (
-        e.target[
-        0 as unknown as keyof typeof e.target
-        ] as unknown as HTMLInputElement
-      ).value,
-      fullName: (
-        e.target[
-        1 as unknown as keyof typeof e.target
-        ] as unknown as HTMLInputElement
-      ).value,
-      phone: (
-        e.target[
-        5 as unknown as keyof typeof e.target
-        ] as unknown as HTMLInputElement
-      ).value,
-      password: (
-        e.target[
-        3 as unknown as keyof typeof e.target
-        ] as unknown as HTMLInputElement
-      ).value,
-    };
-    if (data.email.trim() === "") {
-      toast.error("Email cannot be empty");
-      return;
-    } if (data.password.trim() === "") {
-      toast.error("Oga enter password jare, don't be mad 😡 ");
-      return;
-    } else if (!Helpers.isValidPassword(data.password)) {
-      toast.error("Password not valid!");
-      return
-    } else if (data.phone.trim() === '') {
-      toast.error("Oga enter your phone number, this is not a valid phone number");
-      return;
-    }
-    await fetch(('/api/signup'), {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(async res => {
-        const isJson = res.headers.get('content-type')?.includes('application/json')
-        const data = isJson ? await res.json() : null
-
-        if (!res.ok) {
-          const error = (data && data.message) || res.status;
-          toast.error(error)
-          return Promise.reject(error)
-
-        } else if (res.ok) {
-          toast.success("Sign up success")
-          push('/')
-          console.log(data)
-          return data
-        }
-      })
-      .catch(err => {
-        console.log(err)
-      })
-
-  }
+  const { submitForm, visible, setVisible, password, setPassword } = useSubmitForm(toast)
   return (
     <form className="mt-5 flex flex-col gap-y-[20px] pb-12" onSubmit={e => submitForm(e)}>
       <div className="rounded-lg px-5 flex flex-col w-full border-gray-300 border-[1px] py-2">
@@ -161,6 +90,9 @@ const Form = () => {
           className="py-4 h-full bg-transparent outline-none px-[10px] w-full"
         />
       </div>
+      <p className="text-[lightgray]">
+        You will receive an OTP on your number
+      </p>
 
       <div className="font-semibold text-sm">
         By selecting Agree and continue below, I agree to Spar{" "}
